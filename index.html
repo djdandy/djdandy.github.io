@@ -1,7 +1,176 @@
 <!DOCTYPE html>
 <html>
-    <head>AAA</head>
+    <head>AAA - DDandy 6.1.23</head>
     <body>
-        <p>Hi</p>
+        <p>Welcome to the testing grounds of semi-niche calculators.</p>
+		<div style='float:left'>
+        <form>
+			<fieldset>
+				<legend>Aspiration Depth</legend>
+				<label for="AD_Conical">Choose a Conical:</label>
+				<select id="AD_Conical" name="AD_Conical" onchange="dropdownChange();">
+					<option value="15">15 mL</option>
+					<option value="50">50 mL</option>
+				</select>
+				<br><br>
+				<label for="AD_SVol">Source Volume (µL):</label><br>
+				<input type="number" id="AD_SVol" name="AD_SVol" value="1000"><br>
+				<br>
+				<label for="AD_AVol">Aliquot Volume (µL):</label><br>
+				<input type="number" id="AD_AVol" name="AD_AVol" value="30"><br>
+				<br>
+				<label for="AD_ANum">Number of Aliquots:</label><br>
+				<input type="number" id="AD_ANum" name="AD_ANum" value="10"><br><br>
+				<button type="button" onclick="DepthFunction()">Calculate Depth</button>
+				<p id="depthprint"> Aspiration depth should be set to X mm.</p>
+			</fieldset>
+        </form>
+		</div>
+		
+		<div style='float:left'>
+		<form>
+			<fieldset>
+				<legend>Freezing and Drying Time</legend>
+				<label for="FD_Vol">Volume (µL):</label><br>
+				<input type="number" id="FD_Vol" name="FD_Vol" value="100"><br>
+				<button type="button" onclick="FreezeDryFunction()">Calculate Time</button>
+				<p id="FreezeDryTime"> It will take X minutes to freeze and Y minutes to SpeedVac Z µL.</p>
+			</fieldset>
+        </form>
+		</div>
+		
+		<div style='float:left'>
+		<form>
+			<fieldset>
+				<legend>nmol Aliquot Calculator</legend>
+				<label for="nmol">Desired nmol per Aliquot:</label><br>
+				<input type="number" id="nmol" name="nmol" value="10"><br>
+				<br>
+				<label for="nSMol">Source Molarity (µM):</label><br>
+				<input type="number" id="nSMol" name="nSMol" value="300"><br>
+				<br>
+				Do you need a specific aliquot size?
+				<br>
+				<input type="checkbox" id="nDesiredV" name="nDesiredV" value="Yes">
+				<label for="nDesiredV"> Yes!</label><br><br>
+				<label for="nAVol">Aliquot Volume (µL):</label><br>
+				<input type="number" id="nAVol" name="nAVol" value="30"><br>
+				<br>
+				<label for="nANum">Number of Aliquots:</label><br>
+				<input type="number" id="nANum" name="nANum" value="10"><br><br>
+				<button type="button" onclick="nmolFunction()">Calculate nmol Aliquot</button>
+				<p id="nmolSize"> X µL stock per aliquot.</p>
+			</fieldset>
+		</form>
+		</div>
+		
+		<div style='float:left'>
+		<form>
+			<fieldset>
+				<legend>mg NET Aliquot Calculator</legend>
+				<label for="mgNET">Desired mg NET per Aliquot:</label><br>
+				<input type="number" id="mgNET" name="mgNET" value="1.0"><br>
+				<br>
+				<label for="mgSMol">Source Molarity (µM):</label><br>
+				<input type="number" id="mgSMol" name="mgSMol" value="300"><br>
+				<br>
+				<label for="mgSMW">Source Molecular Weight (g/mol):</label><br>
+				<input type="number" id="mgSMW" name="mgSMW" value="1234.5"><br>
+				<br>
+				Do you need a specific aliquot size?
+				<br>
+				<input type="checkbox" id="mgDesiredV" name="mgDesiredV" value="Yes">
+				<label for="mgDesiredV"> Yes!</label><br><br>
+				<label for="mgAVol">Aliquot Volume (µL):</label><br>
+				<input type="number" id="mgAVol" name="mgAVol" value="30"><br>
+				<br>
+				<label for="mgANum">Number of Aliquots:</label><br>
+				<input type="number" id="mgANum" name="mgANum" value="10"><br><br>
+				<button type="button" onclick="mgNETFunction()">Calculate mg Aliquot</button>
+				<p id="mgNETSize"> X µL stock per aliquot.</p>
+			</fieldset>
+		</form>
+		</div>
+
+	<script>
+		function DepthFunction() {
+		  var S = document.getElementById("AD_SVol").value;
+		  var V = document.getElementById("AD_AVol").value;
+		  var N = document.getElementById("AD_ANum").value;
+		  var C = document.getElementById("AD_Conical").value;
+		  if (C==15) {
+			var x = ((parseFloat(S)-parseFloat(V)*parseFloat(N))-400);
+			if (x>=1500) {
+				var X = Math.floor(((0.006*x-8.7638)+23));
+				document.getElementById("depthprint").innerHTML = "Aspiration depth should be set to " + String(X) +" mm.";
+			} else {
+				document.getElementById("depthprint").innerHTML = "Aspiration depth should be set to 1.5 mm.";
+			}
+		  } else if (C==50) {
+			var y = ((parseFloat(S)-parseFloat(V)*parseFloat(N))-3000);
+			if (y>=3300) {
+				var Y = Math.floor(((0.002*y-6.2216)+17));
+				document.getElementById("depthprint").innerHTML = "Aspiration depth should be set to " + String(Y) +" mm.";
+			} else {
+				document.getElementById("depthprint").innerHTML = "Aspiration depth should be set to 1.5 mm.";
+			}
+		  }
+		}
+	</script>
+	
+	<script>
+		function FreezeDryFunction() {
+		  var V = document.getElementById("FD_Vol").value;
+		  var F = Math.ceil((parseFloat(V)*(30/100)));
+		  var D = Math.ceil((parseFloat(V)*(60/100)));
+		  if (V>=50) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take " + String(F) + " minutes to freeze and " + String(D) + " minutes to SpeedVac " + String(V) + " µL."
+		  } else {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 15 minutes to freeze and 30 minutes to SpeedVac " + String(V) + " µL."
+		  }
+		}
+	</script>
+	
+	<script>
+		function nmolFunction() {
+		  var nmol = document.getElementById("nmol").value;
+		  var yes = document.getElementById("nDesiredV").checked;
+		  var S = document.getElementById("nSMol").value;
+		  var V = document.getElementById("nAVol").value;
+		  var N = document.getElementById("nANum").value;
+		  var x = (parseFloat(nmol)/(parseFloat(S)/1000));
+		  if (yes==true) {
+			document.getElementById("nmolSize").innerHTML = String(Math.round(x*parseFloat(N)*10)/10) + " µL stock + " + String(Math.round(((parseFloat(V)*parseFloat(N))-(x*parseFloat(N)))*10)/10) + " µL solvent. Aliquots are " + String(parseFloat(V)) + " µL.";
+		  } else {
+			if (x>30) {
+				document.getElementById("nmolSize").innerHTML = String(Math.round(x*10)/10) + " µL stock per aliquot.";
+			} else {
+				document.getElementById("nmolSize").innerHTML = String(Math.round(x*parseFloat(N)*10)/10) + " µL stock + " + String(Math.round(((30*parseFloat(N))-(x*parseFloat(N)))*10)/10) + " µL solvent. Aliquots are 30 µL.";
+			}
+		  }
+		}
+	</script>
+	
+		<script>
+		function mgNETFunction() {
+		  var mgNET = document.getElementById("mgNET").value;
+		  var MW = document.getElementById("mgSMW").value;
+		  var yes = document.getElementById("mgDesiredV").checked;
+		  var S = document.getElementById("mgSMol").value;
+		  var V = document.getElementById("mgAVol").value;
+		  var N = document.getElementById("mgANum").value;
+		  var x = ((parseFloat(mgNET)*Math.pow(10,9))/(parseFloat(S)*parseFloat(MW)));
+		  if (yes==true) {
+			document.getElementById("mgNETSize").innerHTML = String(Math.round(x*parseFloat(N)*10)/10) + " µL stock + " + String(Math.round(((parseFloat(V)*parseFloat(N))-(x*parseFloat(N)))*10)/10) + " µL solvent. Aliquots are " + String(parseFloat(V)) + " µL.";
+		  } else {
+			if (x>30) {
+				document.getElementById("mgNETSize").innerHTML = String(Math.round(x*10)/10) + " µL stock per aliquot.";
+			} else {
+				document.getElementById("mgNETSize").innerHTML = String(Math.round(x*parseFloat(N)*10)/10) + " µL stock + " + String(Math.round(((30*parseFloat(N))-(x*parseFloat(N)))*10)/10) + " µL solvent. Aliquots are 30 µL.";
+			}
+		  }
+		}
+	</script>
+	
     </body>
 </html>
