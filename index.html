@@ -121,12 +121,22 @@
 	<script>
 		function FreezeDryFunction() {
 		  var V = document.getElementById("FD_Vol").value;
-		  var F = Math.ceil((parseFloat(V)*(30/100)));
-		  var D = Math.ceil((parseFloat(V)*(60/100)));
-		  if (V>=50) {
-			document.getElementById("FreezeDryTime").innerHTML = "It will take " + String(F) + " minutes to freeze and " + String(D) + " minutes to SpeedVac " + String(V) + " µL."
+		  if (V<=50) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 20 minutes to freeze and 30 minutes to SpeedVac " + String(V) + " µL."
+		  } else if (V<101) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 20 minutes to freeze and 1 hour to SpeedVac " + String(V) + " µL."
+		  } else if (V<201) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 30 minutes to freeze and 1 hour and 30 minutes to SpeedVac " + String(V) + " µL."
+		  } else if (V<301) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 30 minutes to freeze and 2 hours to SpeedVac " + String(V) + " µL."
+		  } else if (V<501) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 30 minutes to freeze and 2 hours and 30 minutes to SpeedVac " + String(V) + " µL."
+		  } else if (V<751) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 45 minutes to freeze and 3 hours to SpeedVac " + String(V) + " µL."
+		  } else if (V<1001) {
+			document.getElementById("FreezeDryTime").innerHTML = "It will take 45 minutes to freeze and 4 hours to SpeedVac " + String(V) + " µL."
 		  } else {
-			document.getElementById("FreezeDryTime").innerHTML = "It will take 15 minutes to freeze and 30 minutes to SpeedVac " + String(V) + " µL."
+			document.getElementById("FreezeDryTime").innerHTML = "See a supervisor for recommended freezing and drying times."
 		  }
 		}
 	</script>
