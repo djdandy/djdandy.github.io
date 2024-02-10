@@ -1,10 +1,10 @@
 ---
 layout: default
 ---
-    <body>
+<body>
 	<head>AAA - DDandy 6.1.23</head>
         <p>Welcome to the testing grounds of semi-niche calculators.</p>
-		<div style='float:left'>
+		<div style='float:none'>
         <form>
 			<fieldset>
 				<legend>Aspiration Depth</legend>
@@ -28,7 +28,7 @@ layout: default
         </form>
 		</div>
 		
-		<div style='float:left'>
+		<div style='float:none'>
 		<form>
 			<fieldset>
 				<legend>Freezing and Drying Time</legend>
@@ -40,57 +40,57 @@ layout: default
         </form>
 		</div>
 		
-		<div style='float:left'>
-	<form>
-			<fieldset>
-				<legend>nmol Aliquot Calculator</legend>
-				<label for="nmol">Desired nmol per Aliquot:</label><br>
-				<input type="number" id="nmol" name="nmol" value="10"><br>
-				<br>
-				<label for="nSMol">Source Molarity (µM):</label><br>
-				<input type="number" id="nSMol" name="nSMol" value="300"><br>
-				<br>
-				Do you need a specific aliquot size?
-				<br>
-				<input type="checkbox" id="nDesiredV" name="nDesiredV" value="Yes">
-				<label for="nDesiredV"> Yes!</label><br><br>
-				<label for="nAVol">Aliquot Volume (µL):</label><br>
-				<input type="number" id="nAVol" name="nAVol" value="30"><br>
-				<br>
-				<label for="nANum">Number of Aliquots:</label><br>
-				<input type="number" id="nANum" name="nANum" value="10"><br><br>
-				<button type="button" onclick="nmolFunction()">Calculate nmol Aliquot</button>
-				<p id="nmolSize"> X µL stock per aliquot.</p>
-			</fieldset>
-	</form>
+		<div style='float:none'>
+			<form>
+				<fieldset>
+					<legend>nmol Aliquot Calculator</legend>
+					<label for="nmol">Desired nmol per Aliquot:</label><br>
+					<input type="number" id="nmol" name="nmol" value="10"><br>
+					<br>
+					<label for="nSMol">Source Molarity (µM):</label><br>
+					<input type="number" id="nSMol" name="nSMol" value="300"><br>
+					<br>
+					Do you need a specific aliquot size?
+					<br>
+					<input type="checkbox" id="nDesiredV" name="nDesiredV" value="Yes">
+					<label for="nDesiredV"> Yes!</label><br><br>
+					<label for="nAVol">Aliquot Volume (µL):</label><br>
+					<input type="number" id="nAVol" name="nAVol" value="30"><br>
+					<br>
+					<label for="nANum">Number of Aliquots:</label><br>
+					<input type="number" id="nANum" name="nANum" value="10"><br><br>
+					<button type="button" onclick="nmolFunction()">Calculate nmol Aliquot</button>
+					<p id="nmolSize"> X µL stock per aliquot.</p>
+				</fieldset>
+			</form>
 		</div>
 		
-		<div style='float:left'>
-	<form>
-			<fieldset>
-				<legend>mg NET Aliquot Calculator</legend>
-				<label for="mgNET">Desired mg NET per Aliquot:</label><br>
-				<input type="number" id="mgNET" name="mgNET" value="1.0"><br>
-				<br>
-				<label for="mgSMol">Source Molarity (µM):</label><br>
-				<input type="number" id="mgSMol" name="mgSMol" value="300"><br>
-				<br>
-				<label for="mgSMW">Source Molecular Weight (g/mol):</label><br>
-				<input type="number" id="mgSMW" name="mgSMW" value="1234.5"><br>
-				<br>
-				Do you need a specific aliquot size?
-				<br>
-				<input type="checkbox" id="mgDesiredV" name="mgDesiredV" value="Yes">
-				<label for="mgDesiredV"> Yes!</label><br><br>
-				<label for="mgAVol">Aliquot Volume (µL):</label><br>
-				<input type="number" id="mgAVol" name="mgAVol" value="30"><br>
-				<br>
-				<label for="mgANum">Number of Aliquots:</label><br>
-				<input type="number" id="mgANum" name="mgANum" value="10"><br><br>
-				<button type="button" onclick="mgNETFunction()">Calculate mg Aliquot</button>
-				<p id="mgNETSize"> X µL stock per aliquot.</p>
-			</fieldset>
-	</form>
+		<div style='float:none'>
+			<form>
+				<fieldset>
+					<legend>mg NET Aliquot Calculator</legend>
+					<label for="mgNET">Desired mg NET per Aliquot:</label><br>
+					<input type="number" id="mgNET" name="mgNET" value="1.0"><br>
+					<br>
+					<label for="mgSMol">Source Molarity (µM):</label><br>
+					<input type="number" id="mgSMol" name="mgSMol" value="300"><br>
+					<br>
+					<label for="mgSMW">Source Molecular Weight (g/mol):</label><br>
+					<input type="number" id="mgSMW" name="mgSMW" value="1234.5"><br>
+					<br>
+					Do you need a specific aliquot size?
+					<br>
+					<input type="checkbox" id="mgDesiredV" name="mgDesiredV" value="Yes">
+					<label for="mgDesiredV"> Yes!</label><br><br>
+					<label for="mgAVol">Aliquot Volume (µL):</label><br>
+					<input type="number" id="mgAVol" name="mgAVol" value="30"><br>
+					<br>
+					<label for="mgANum">Number of Aliquots:</label><br>
+					<input type="number" id="mgANum" name="mgANum" value="10"><br><br>
+					<button type="button" onclick="mgNETFunction()">Calculate mg Aliquot</button>
+					<p id="mgNETSize"> X µL stock per aliquot.</p>
+				</fieldset>
+			</form>
 		</div>
 
 	<script>
@@ -183,4 +183,4 @@ layout: default
 		}
 	</script>
 	
-    </body>
+</body>
