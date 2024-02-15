@@ -21,63 +21,75 @@ title: Opentrons
 			<form>
 				<fieldset>
 					<legend>Opentrons Easy Python WIP</legend>
-					<label for="TLocation">Where are the tips located?</label>
-					<select id="TLocation" name="TLocation" onchange="dropdownChange();">
-						<option value="1">Position 1</option>
-						<option value="2">Position 2</option>
-						<option value="3">Position 3</option>
-						<option value="4">Position 4</option>
-						<option value="5">Position 5</option>
-						<option value="6">Position 6</option>
-						<option value="7">Position 7</option>
-						<option value="8">Position 8</option>
-						<option value="9">Position 9</option>
-						<option value="10">Position 10</option>
-						<option value="11">Position 11</option>
-					</select>
+					<div style='float:left'>
+						<label for="TLocation">Where are the tips located?</label>
+						<select id="TLocation" name="TLocation" onchange="dropdownChange();">
+							<option value="1">Position 1</option>
+							<option value="2">Position 2</option>
+							<option value="3">Position 3</option>
+							<option value="4">Position 4</option>
+							<option value="5">Position 5</option>
+							<option value="6">Position 6</option>
+							<option value="7">Position 7</option>
+							<option value="8">Position 8</option>
+							<option value="9">Position 9</option>
+							<option value="10">Position 10</option>
+							<option value="11">Position 11</option>
+						</select>
+					</div>
+					<div style='float:right'>
+						<label for="SLocation">Where is the source located?</label>
+						<select id="SLocation" name="SLocation" onchange="dropdownChange();">
+							<option value="1">Position 1</option>
+							<option value="2">Position 2</option>
+							<option value="3">Position 3</option>
+							<option value="4">Position 4</option>
+							<option value="5">Position 5</option>
+							<option value="6">Position 6</option>
+							<option value="7">Position 7</option>
+							<option value="8">Position 8</option>
+							<option value="9">Position 9</option>
+							<option value="10">Position 10</option>
+							<option value="11">Position 11</option>
+						</select>
+					</div>
 					<br><br>
-					<label for="SLocation">Where is the source located?</label>
-					<select id="SLocation" name="SLocation" onchange="dropdownChange();">
-						<option value="1">Position 1</option>
-						<option value="2">Position 2</option>
-						<option value="3">Position 3</option>
-						<option value="4">Position 4</option>
-						<option value="5">Position 5</option>
-						<option value="6">Position 6</option>
-						<option value="7">Position 7</option>
-						<option value="8">Position 8</option>
-						<option value="9">Position 9</option>
-						<option value="10">Position 10</option>
-						<option value="11">Position 11</option>
-					</select>
-					<br><br>
+					<div style='float:left'>
 					<label for="SSize">What size is the source conical?</label>
 					<select id="SSize" name="SSize" onchange="dropdownChange();">
 						<option value="15">15 mL</option>
 						<option value="50">50 mL</option>
 					</select>
-					<br><br>
+					</div>
+					<div style='float:right'>
 					<label for="ATray">What tray are the aliquots in?</label>
 					<select id="ATray" name="ATray" onchange="dropdownChange();">
 						<option value="24">24 (4 x 6) 1.5 mL Screwcap Tray</option>
 						<option value="54">54 (6 x 9) Aligent Tray</option>
 					</select>
+					</div>
 					<br><br>
+					<div style='float:left'>
 					<label for="Pip">What pipette are you using?</label>
 					<select id="Pip" name="Pip" onchange="dropdownChange();">
 						<option value="p300" data-arm="left">300 µL</option>
 						<option value="p1000" data-arm="right">1 mL</option>
 					</select>
-					<br><br>
+					</div>
+					<div style='float:right'>
 					<label for="SVolume">What is the volume (µL) of the source?</label><br>
 					<input type="number" id="SVolume" name="SVolume" value="2000">
-					<br><br>
+					</div>
+					<br><br><br>
+					<div style='float:left'>
 					<label for="Tubes">How many aliquots are there?</label><br>
 					<input type="number" id="Tubes" name="Tubes" value="10">
-					<br><br>
+					</div>
+					<div style='float:right'>
 					<label for="AVolume">What is the volume (µL) of the aliquots?</label><br>
 					<input type="number" id="AVolume" name="AVolume" value="30">
-					<br><br>
+					</div>
+					<br><br><br>
 					<button type="button" onclick="OpentronsEasyPy()">Generate Opentrons Python</button>
 					<br>
 					<textarea cols="100" rows="15" readonly id="OpentronsOutput" name="OpentronsOutput" value="Output Here"></textarea>
