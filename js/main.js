@@ -79,3 +79,14 @@ function mgNETFunction() {
 	}
   }
 }
+
+function OpentronsEasyPy() {
+	var TLocation = document.getElementById("TLocation").value;
+	var SLocation = document.getElementById("SLocation").value;
+	var SSize = document.getElementById("SSize").value;
+	var ATray = document.getElementById("ATray").value;
+	var SVolume = document.getElementById("SVolume").value;
+	var Tubes = document.getElementById("Tubes").value;
+	var AVolume = document.getElementById("AVolume").value;
+	var OpentronsOutput = ""
+}

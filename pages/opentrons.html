@@ -1,0 +1,132 @@
+---
+layout: default
+title: Opentrons
+---
+
+<title>Opentrons</title>
+
+<div class="side">
+	<a href="https://djdandy.github.io/index.html" class="sidelink">Home</a>
+	<a href="/pages/calculators.html" class="sidelink">Calculators</a>
+	<a href="/pages/opentrons.html" class="sidelink" style="color:black;">Opentrons</a>
+</div>
+
+<div class="main">
+	<body>
+		<script src="/js/main.js"></script>
+		<head>Last Updated 2.12.24</head>
+		<p>Welcome to the Opentrons page.</p>
+			
+		<div style='float:none'>
+			<form>
+				<fieldset>
+					<legend>Opentrons Easy Python WIP</legend>
+					<label for="TLocation">Where are the tips located?</label>
+					<select id="TLocation" name="TLocation" onchange="dropdownChange();">
+						<option value="1">Position 1</option>
+						<option value="2">Position 2</option>
+						<option value="3">Position 3</option>
+						<option value="4">Position 4</option>
+						<option value="5">Position 5</option>
+						<option value="6">Position 6</option>
+						<option value="7">Position 7</option>
+						<option value="8">Position 8</option>
+						<option value="9">Position 9</option>
+						<option value="10">Position 10</option>
+						<option value="11">Position 11</option>
+					</select>
+					<br><br>
+					<label for="SLocation">Where is the source located?</label>
+					<select id="SLocation" name="SLocation" onchange="dropdownChange();">
+						<option value="1">Position 1</option>
+						<option value="2">Position 2</option>
+						<option value="3">Position 3</option>
+						<option value="4">Position 4</option>
+						<option value="5">Position 5</option>
+						<option value="6">Position 6</option>
+						<option value="7">Position 7</option>
+						<option value="8">Position 8</option>
+						<option value="9">Position 9</option>
+						<option value="10">Position 10</option>
+						<option value="11">Position 11</option>
+					</select>
+					<br><br>
+					<label for="SSize">What size is the source conical?</label>
+					<select id="SSize" name="SSize" onchange="dropdownChange();">
+						<option value="15">15 mL</option>
+						<option value="50">50 mL</option>
+					</select>
+					<br><br>
+					<label for="ATray">What tray are the aliquots in?</label>
+					<select id="ATray" name="ATray" onchange="dropdownChange();">
+						<option value="24">24 (4 x 6) 1.5 mL Screwcap Tray</option>
+						<option value="54">54 (6 x 9) Aligent Tray</option>
+					</select>
+					<br><br>
+					<label for="Pip">What pipette are you using?</label>
+					<select id="Pip" name="Pip" onchange="dropdownChange();">
+						<option value="p300" data-arm="left">300 µL</option>
+						<option value="p1000" data-arm="right">1 mL</option>
+					</select>
+					<br><br>
+					<label for="SVolume">What is the volume (µL) of the source?</label><br>
+					<input type="number" id="SVolume" name="SVolume" value="2000">
+					<br><br>
+					<label for="Tubes">How many aliquots are there?</label><br>
+					<input type="number" id="Tubes" name="Tubes" value="10">
+					<br><br>
+					<label for="AVolume">What is the volume (µL) of the aliquots?</label><br>
+					<input type="number" id="AVolume" name="AVolume" value="30">
+					<br><br>
+					<button type="button" onclick="OpentronsEasyPy()">Generate Opentrons Python</button>
+					<br>
+					<textarea cols="160" rows="30" readonly id="OpentronsOutput" name="OpentronsOutput" value="Output Here"></textarea>
+					<br><br>
+				</fieldset>
+			</form>
+		</div>
+			
+	</body>
+</div>
+
+<script>
+function OpentronsEasyPy() {
+	var TLocation = document.getElementById("TLocation").value;
+	var SLocation = document.getElementById("SLocation").value;
+	var SSize = document.getElementById("SSize").value;
+	var ATray = document.getElementById("ATray").value;
+	var Pip = document.getElementById("Pip").value;
+	var PipArm = document.getElementById("Pip").getAttribute("data-arm");
+	var SVolume = document.getElementById("SVolume").value;
+	var Tubes = document.getElementById("Tubes").value;
+	var AVolume = document.getElementById("AVolume").value;
+	var OpentronsOutput = "from opentrons import protocol_api\n"
+	OpentronsOutput = OpentronsOutput + "\nmetadata = {'apiLevel': '2.12',\n\t    'protocolName': 'Easy Opentrons Python',\n\t    'description': '''Generated Opentrons Python''',\n\t    'author': 'Dylan D'}\n"
+	OpentronsOutput = OpentronsOutput + "\ndef run(protocol: protocol_api.ProtocolContext):\n"
+	OpentronsOutput = OpentronsOutput + "\ttiprack_1 = protocol.load_labware('opentrons_96_tiprack_300ul', " + TLocation + ")\n"
+	OpentronsOutput = OpentronsOutput + "\ttube_rack_1 = protocol.load_labware('opentrons_10_tuberack_falcon_4x50ml_6x15ml_conical', " + SLocation + ")\n"
+	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
+	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
+	OpentronsOutput = OpentronsOutput + "\t" + Pip + " = protocol.load_instrument('" + Pip + "_single', '" + "CHANGE" + "', tip_racks=[tiprack_1])\n"
+	OpentronsOutput = OpentronsOutput + "\n\t" + Pip + ".well_bottom_clearance.dispense = 15\n"
+	OpentronsOutput = OpentronsOutput + "\n\tsource=tube_rack_1.wells()[" + "CHANGE" + "]\n"
+	OpentronsOutput = OpentronsOutput + "\tsource_vol=" + SVolume + "\n"
+	OpentronsOutput = OpentronsOutput + "\tremain_vol=source_vol\n"
+	OpentronsOutput = OpentronsOutput + "\tamounts=[" + AVolume + "]\n"
+	OpentronsOutput = OpentronsOutput + "\n\t" + Pip + ".pick_up_tip()\n"
+	OpentronsOutput = OpentronsOutput + "\n\tfor CHANGE in range(CHANGE):\n"
+	OpentronsOutput = OpentronsOutput + "\t\tdestination=CHANGE.wells()[CHANGE]\n"
+	OpentronsOutput = OpentronsOutput + "\t\tremain_vol=remain_vol-amounts[0]\n"
+	OpentronsOutput = OpentronsOutput + "\t\ttemp_remain_vol=(remain_vol)-CHANGE\n"
+	OpentronsOutput = OpentronsOutput + "\t\tif temp_remain_vol>=CHANGE:\n"
+	OpentronsOutput = OpentronsOutput + "\t\t\t" + Pip + ".well_bottom_clearance.aspirate = CHANGE\n"
+	OpentronsOutput = OpentronsOutput + "\t\telse:\n"
+	OpentronsOutput = OpentronsOutput + "\t\t\t" + Pip + ".distribute(amounts[0], source, destination, new_tip = 'never', blow_out = True, blowout_location = 'source well')\n"
+	document.getElementById("OpentronsOutput").value = OpentronsOutput
+}
+</script>
+
+<footer class="footer">
+	<a href="https://www.linkedin.com/in/dylan-dandy/" target=”_blank”><img src="/assets/images/LI-In-Bug.png" alt="LinkedIn Profile for Dylan Dandy" style="width:50px;height:43px;"></a>
+	<a href="https://github.com/djdandy" target=”_blank”><img src="/assets/images/github-mark.png" alt="GitHub Profile for Dylan Dandy" style="width:43px;height:43px;"></a>
+</footer>
