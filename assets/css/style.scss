@@ -18,6 +18,12 @@ input[type=number] {
 	z-index: 2;
 }
 
+@media screen and (min-width: 64em) {
+ .page-header {
+  padding:1rem 6rem
+ }
+}
+
 .side{
 	height: 100%;
 	width: 160px; 
