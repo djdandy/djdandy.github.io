@@ -23,7 +23,7 @@ title: Opentrons
 					<legend>Opentrons Easy Python WIP</legend>
 					<div style='float:left'>
 						<label for="TLocation">Where are the tips located?</label>
-						<select id="TLocation" name="TLocation" onchange="dropdownChange();">
+						<select id="TLocation" name="TLocation">
 							<option value="1">Position 1</option>
 							<option value="2">Position 2</option>
 							<option value="3">Position 3</option>
@@ -39,7 +39,7 @@ title: Opentrons
 					</div>
 					<div style='float:right'>
 						<label for="SLocation">Where is the source located?</label>
-						<select id="SLocation" name="SLocation" onchange="dropdownChange();">
+						<select id="SLocation" name="SLocation">
 							<option value="1">Position 1</option>
 							<option value="2">Position 2</option>
 							<option value="3">Position 3</option>
@@ -56,14 +56,14 @@ title: Opentrons
 					<br><br>
 					<div style='float:left'>
 					<label for="SSize">What size is the source conical?</label>
-					<select id="SSize" name="SSize" onchange="dropdownChange();">
+					<select id="SSize" name="SSize">
 						<option value="15">15 mL</option>
 						<option value="50">50 mL</option>
 					</select>
 					</div>
 					<div style='float:right'>
 					<label for="ATray">What tray are the aliquots in?</label>
-					<select id="ATray" name="ATray" onchange="dropdownChange();">
+					<select id="ATray" name="ATray">
 						<option value="24">24 (4 x 6) 1.5 mL Screwcap Tray</option>
 						<option value="54">54 (6 x 9) Aligent Tray</option>
 					</select>
@@ -71,7 +71,7 @@ title: Opentrons
 					<br><br>
 					<div style='float:left'>
 					<label for="Pip">What pipette are you using?</label>
-					<select id="Pip" name="Pip" onchange="dropdownChange();">
+					<select id="Pip" name="Pip">
 						<option value="p300">300 µL</option>
 						<option value="p1000">1 mL</option>
 					</select>
