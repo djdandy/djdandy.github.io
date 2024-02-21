@@ -72,8 +72,8 @@ title: Opentrons
 					<div style='float:left'>
 					<label for="Pip">What pipette are you using?</label>
 					<select id="Pip" name="Pip" onchange="dropdownChange();">
-						<option value="p300" data-arm="left">300 µL</option>
-						<option value="p1000" data-arm="right">1 mL</option>
+						<option value="p300">300 µL</option>
+						<option value="p1000">1 mL</option>
 					</select>
 					</div>
 					<div style='float:right'>
@@ -108,18 +108,30 @@ function OpentronsEasyPy() {
 	var SSize = document.getElementById("SSize").value;
 	var ATray = document.getElementById("ATray").value;
 	var Pip = document.getElementById("Pip").value;
+	var PipArm = null;
+	if (Pip=="p300") {
+		PipArm = "left"
+	} else {
+		PipArm = "right"
+	}
+	var PipTip = null;
+	if (Pip=="p300") {
+		PipTip = "300ul"
+	} else {
+		PipTip = "1000ul"
+	}
 	var PipArm = document.getElementById("Pip").getAttribute("data-arm");
 	var SVolume = document.getElementById("SVolume").value;
 	var Tubes = document.getElementById("Tubes").value;
 	var AVolume = document.getElementById("AVolume").value;
-	var OpentronsOutput = "from opentrons import protocol_api\n"
-	OpentronsOutput = OpentronsOutput + "\nmetadata = {'apiLevel': '2.12',\n\t    'protocolName': 'Easy Opentrons Python',\n\t    'description': '''Generated Opentrons Python''',\n\t    'author': 'Dylan D'}\n"
+	var OpentronsOutput = "from opentrons import protocol_api\n";
+	OpentronsOutput = OpentronsOutput + "\nmetadata = {'apiLevel': '2.12',\n\t    'protocolName': 'Easy Opentrons Python',\n\t    'description': '''Generated Opentrons Python''',\n\t    'author': 'Dylan D.'}\n"
 	OpentronsOutput = OpentronsOutput + "\ndef run(protocol: protocol_api.ProtocolContext):\n"
-	OpentronsOutput = OpentronsOutput + "\ttiprack_1 = protocol.load_labware('opentrons_96_tiprack_300ul', " + TLocation + ")\n"
+	OpentronsOutput = OpentronsOutput + "\ttiprack_1 = protocol.load_labware('opentrons_96_tiprack_" PipTip + "', " + TLocation + ")\n"
 	OpentronsOutput = OpentronsOutput + "\ttube_rack_1 = protocol.load_labware('opentrons_10_tuberack_falcon_4x50ml_6x15ml_conical', " + SLocation + ")\n"
 	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
 	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
-	OpentronsOutput = OpentronsOutput + "\t" + Pip + " = protocol.load_instrument('" + Pip + "_single', '" + "CHANGE" + "', tip_racks = [tiprack_1])\n"
+	OpentronsOutput = OpentronsOutput + "\t" + Pip + " = protocol.load_instrument('" + Pip + "_single', '" + PipArm + "', tip_racks = [tiprack_1])\n"
 	OpentronsOutput = OpentronsOutput + "\n\t" + Pip + ".well_bottom_clearance.dispense = 15\n"
 	OpentronsOutput = OpentronsOutput + "\n\tsource = tube_rack_1.wells()[" + "CHANGE" + "]\n"
 	OpentronsOutput = OpentronsOutput + "\tsource_vol = " + SVolume + "\n"
