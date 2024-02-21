@@ -127,7 +127,7 @@ function OpentronsEasyPy() {
 	var OpentronsOutput = "from opentrons import protocol_api\n";
 	OpentronsOutput = OpentronsOutput + "\nmetadata = {'apiLevel': '2.12',\n\t    'protocolName': 'Easy Opentrons Python',\n\t    'description': '''Generated Opentrons Python''',\n\t    'author': 'Dylan D.'}\n"
 	OpentronsOutput = OpentronsOutput + "\ndef run(protocol: protocol_api.ProtocolContext):\n"
-	OpentronsOutput = OpentronsOutput + "\ttiprack_1 = protocol.load_labware('opentrons_96_tiprack_" PipTip + "', " + TLocation + ")\n"
+	OpentronsOutput = OpentronsOutput + "\ttiprack_1 = protocol.load_labware('opentrons_96_tiprack_" + PipTip + "', " + TLocation + ")\n"
 	OpentronsOutput = OpentronsOutput + "\ttube_rack_1 = protocol.load_labware('opentrons_10_tuberack_falcon_4x50ml_6x15ml_conical', " + SLocation + ")\n"
 	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
 	OpentronsOutput = OpentronsOutput + "\tCHANGE\n"
