@@ -105,22 +105,24 @@ title: Opentrons
 function OpentronsEasyPy() {
 	var TLocation = document.getElementById("TLocation").value;
 	var SLocation = document.getElementById("SLocation").value;
+	Locations = Locations.filter(function(pos) {
+		return pos != TLocation;
+	});
+	Locations = Locations.filter(function(pos) {
+		return pos != SLocation;
+	});
 	var SSize = document.getElementById("SSize").value;
 	var ATray = document.getElementById("ATray").value;
 	var Pip = document.getElementById("Pip").value;
 	var PipArm = null;
-	if (Pip=="p300") {
-		PipArm = "left"
-	} else {
-		PipArm = "right"
-	}
 	var PipTip = null;
 	if (Pip=="p300") {
+		PipArm = "left"
 		PipTip = "300ul"
 	} else {
+		PipArm = "right"
 		PipTip = "1000ul"
 	}
-	var PipArm = document.getElementById("Pip").getAttribute("data-arm");
 	var SVolume = document.getElementById("SVolume").value;
 	var Tubes = document.getElementById("Tubes").value;
 	var AVolume = document.getElementById("AVolume").value;
@@ -146,6 +148,7 @@ function OpentronsEasyPy() {
 	OpentronsOutput = OpentronsOutput + "\t\t\t" + Pip + ".well_bottom_clearance.aspirate = CHANGE\n"
 	OpentronsOutput = OpentronsOutput + "\t\telse:\n"
 	OpentronsOutput = OpentronsOutput + "\t\t\t" + Pip + ".distribute(amounts[0], source, destination, new_tip = 'never', blow_out = True, blowout_location = 'source well')\n"
+	OpentronsOutput = OpentronsOutput + Locations
 	document.getElementById("OpentronsOutput").value = OpentronsOutput
 }
 </script>
