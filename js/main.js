@@ -123,7 +123,7 @@ function OpentronsEasyPy() {
 		PipArm = "right"
 		PipTip = "1000ul"
 	}
-	var SVolume = document.getElementById("SVolume").value;
+	var SVolume = document.getElementById("SVolume").value; 
 	var Tubes = document.getElementById("Tubes").value;
 	var Trays = Math.floor(Tubes/ATray)
 	var AVolume = document.getElementById("AVolume").value;
