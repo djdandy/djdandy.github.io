@@ -24,8 +24,8 @@ title: Opentrons
 					<div style='clear:both;'>
 						<div style='float:left'>
 							<label for="TLocation" style="display:block">Where are the tips located?</label>
-							<select id="TLocation" name="TLocation">
-								<option value="1">Position 1</option>
+							<select id="TLocation" name="TLocation" onchange="PosCheck()">
+								<option value="1" selected>Position 1</option>
 								<option value="2">Position 2</option>
 								<option value="3">Position 3</option>
 								<option value="4">Position 4</option>
@@ -40,9 +40,9 @@ title: Opentrons
 						</div>
 						<div style='float:right'>
 							<label for="SLocation" style="display:block">Where is the source located?</label>
-							<select style='float:right' id="SLocation" name="SLocation">
+							<select style='float:right' id="SLocation" name="SLocation" onchange="PosCheck()">
 								<option value="1">Position 1</option>
-								<option value="2">Position 2</option>
+								<option value="2" selected>Position 2</option>
 								<option value="3">Position 3</option>
 								<option value="4">Position 4</option>
 								<option value="5">Position 5</option>
@@ -101,7 +101,21 @@ title: Opentrons
 				</fieldset>
 			</form>
 		</div>
-			
+
+		<script>
+			function PosCheck() {
+				var TLocation = document.getElementById("TLocation").value;
+				var SLocation = document.getElementById("SLocation").value;
+				if (TLocation==SLocation) {
+					document.getElementById("TLocation").style.color="red"
+					document.getElementById("SLocation").style.color="red"
+				} else {
+					document.getElementById("TLocation").style.color="black"
+					document.getElementById("SLocation").style.color="black"
+				}
+			}
+		</script>
+		
 	</body>
 </div>
 
