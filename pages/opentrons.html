@@ -21,75 +21,79 @@ title: Opentrons
 			<form>
 				<fieldset>
 					<legend>Opentrons Easy Python WIP</legend>
-					<div style='float:left'>
-						<label for="TLocation" style="display:block">Where are the tips located?</label>
-						<select id="TLocation" name="TLocation">
-							<option value="1">Position 1</option>
-							<option value="2">Position 2</option>
-							<option value="3">Position 3</option>
-							<option value="4">Position 4</option>
-							<option value="5">Position 5</option>
-							<option value="6">Position 6</option>
-							<option value="7">Position 7</option>
-							<option value="8">Position 8</option>
-							<option value="9">Position 9</option>
-							<option value="10">Position 10</option>
-							<option value="11">Position 11</option>
+					<div style='clear:both;'>
+						<div style='float:left'>
+							<label for="TLocation" style="display:block">Where are the tips located?</label>
+							<select id="TLocation" name="TLocation">
+								<option value="1">Position 1</option>
+								<option value="2">Position 2</option>
+								<option value="3">Position 3</option>
+								<option value="4">Position 4</option>
+								<option value="5">Position 5</option>
+								<option value="6">Position 6</option>
+								<option value="7">Position 7</option>
+								<option value="8">Position 8</option>
+								<option value="9">Position 9</option>
+								<option value="10">Position 10</option>
+								<option value="11">Position 11</option>
+							</select>
+						</div>
+						<div style='float:right'>
+							<label for="SLocation" style="display:block">Where is the source located?</label>
+							<select id="SLocation" name="SLocation">
+								<option value="1">Position 1</option>
+								<option value="2">Position 2</option>
+								<option value="3">Position 3</option>
+								<option value="4">Position 4</option>
+								<option value="5">Position 5</option>
+								<option value="6">Position 6</option>
+								<option value="7">Position 7</option>
+								<option value="8">Position 8</option>
+								<option value="9">Position 9</option>
+								<option value="10">Position 10</option>
+								<option value="11">Position 11</option>
+							</select>
+						</div>
+					</div>
+					<div style='clear:both;'>
+						<div style='float:left'>
+						<label for="SSize" style="display:block">What size is the source conical?</label>
+						<select id="SSize" name="SSize">
+							<option value="15">15 mL</option>
+							<option value="50">50 mL</option>
 						</select>
-					</div>
-					<div style='float:right'>
-						<label for="SLocation" style="display:block">Where is the source located?</label>
-						<select id="SLocation" name="SLocation">
-							<option value="1">Position 1</option>
-							<option value="2">Position 2</option>
-							<option value="3">Position 3</option>
-							<option value="4">Position 4</option>
-							<option value="5">Position 5</option>
-							<option value="6">Position 6</option>
-							<option value="7">Position 7</option>
-							<option value="8">Position 8</option>
-							<option value="9">Position 9</option>
-							<option value="10">Position 10</option>
-							<option value="11">Position 11</option>
+						</div>
+						<div style='float:right'>
+						<label for="ATray" style="display:block">What tray are the aliquots in?</label>
+						<select id="ATray" name="ATray">
+							<option value="24">24 (4 x 6) 1.5 mL Screwcap Tray</option>
+							<option value="54">54 (6 x 9) Aligent Tray</option>
 						</select>
+						</div>
 					</div>
-					<br><br>
-					<div style='float:left'>
-					<label for="SSize" style="display:block">What size is the source conical?</label>
-					<select id="SSize" name="SSize">
-						<option value="15">15 mL</option>
-						<option value="50">50 mL</option>
-					</select>
+					<div style='clear:both;'>
+						<div style='float:left'>
+						<label for="Pip" style="display:block">What pipette are you using?</label>
+						<select id="Pip" name="Pip">
+							<option value="p300">300 µL</option>
+							<option value="p1000">1 mL</option>
+						</select>
+						</div>
+						<div style='float:right'>
+						<label for="SVolume">What is the volume (µL) of the source?</label><br>
+						<input type="number" id="SVolume" name="SVolume" value="2000">
+						</div>
 					</div>
-					<div style='float:right'>
-					<label for="ATray" style="display:block">What tray are the aliquots in?</label>
-					<select id="ATray" name="ATray">
-						<option value="24">24 (4 x 6) 1.5 mL Screwcap Tray</option>
-						<option value="54">54 (6 x 9) Aligent Tray</option>
-					</select>
+					<div style='clear:both;'>
+						<div style='float:left'>
+						<label for="Tubes">How many aliquots are there?</label><br>
+						<input type="number" id="Tubes" name="Tubes" value="10">
+						</div>
+						<div style='float:right'>
+						<label for="AVolume">What is the volume (µL) of the aliquots?</label><br>
+						<input type="number" id="AVolume" name="AVolume" value="30">
+						</div>
 					</div>
-					<br><br>
-					<div style='float:left'>
-					<label for="Pip" style="display:block">What pipette are you using?</label>
-					<select id="Pip" name="Pip">
-						<option value="p300">300 µL</option>
-						<option value="p1000">1 mL</option>
-					</select>
-					</div>
-					<div style='float:right'>
-					<label for="SVolume">What is the volume (µL) of the source?</label><br>
-					<input type="number" id="SVolume" name="SVolume" value="2000">
-					</div>
-					<br><br><br>
-					<div style='float:left'>
-					<label for="Tubes">How many aliquots are there?</label><br>
-					<input type="number" id="Tubes" name="Tubes" value="10">
-					</div>
-					<div style='float:right'>
-					<label for="AVolume">What is the volume (µL) of the aliquots?</label><br>
-					<input type="number" id="AVolume" name="AVolume" value="30">
-					</div>
-					<br><br><br>
 					<button type="button" onclick="OpentronsEasyPy()">Generate Opentrons Python</button>
 					<br>
 					<textarea cols="90" rows="15" readonly id="OpentronsOutput" name="OpentronsOutput" value="Output Here"></textarea>
