@@ -20,6 +20,8 @@ input[type=number] {
 
 .project-tagline{
 	visibility: hidden;
+	color: white;
+    	text-decoration: none;
 }
 
 @media screen and (min-width: 64em) {
@@ -30,13 +32,15 @@ input[type=number] {
 
 .topnav{
 	visibility: hidden;
+	background-image: linear-gradient(120deg, #155799, #159957);
+}
+
+.topnavlinks{
 	color: white;
     	text-decoration: none;
     	font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     	font-size: 20px;
 	line-height: 1.5;
-	padding-left: 15px;
-	background-image: linear-gradient(120deg, #155799, #159957);
 }
 
 .side{
