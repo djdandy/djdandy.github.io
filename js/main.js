@@ -1,3 +1,12 @@
+function Hamburger() {
+	var Nav = document.getElementById("NavLinks");
+	if (Nav.style.visibility === "visible") {
+		Nav.style.visibility= "hidden";
+	} else {
+		Nav.style.visibility= "visible";
+	}
+}
+
 function DepthFunction() {
   var S = document.getElementById("AD_SVol").value;
   var V = document.getElementById("AD_AVol").value;
