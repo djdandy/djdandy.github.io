@@ -18,6 +18,10 @@ input[type=number] {
 	z-index: 2;
 }
 
+.project-tagline{
+	visibility: hidden;
+}
+
 @media screen and (min-width: 64em) {
  .page-header {
   padding:1rem 6rem
@@ -47,6 +51,9 @@ input[type=number] {
 @media screen and (max-width: 1200px){
 	.side{
 		visibility: hidden;
+	}
+	.project-tagline{
+		visibility: visible;
 	}
 }
 
