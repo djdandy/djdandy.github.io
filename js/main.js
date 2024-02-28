@@ -1,9 +1,9 @@
 function Hamburger() {
 	var Nav = document.getElementById("NavLinks");
-	if (Nav.style.visibility === "visible") {
-		Nav.style.visibility= "hidden";
+	if (Nav.style.display === "none") {
+		Nav.style.display = "grid";
 	} else {
-		Nav.style.visibility= "visible";
+		Nav.style.display = "none";
 	}
 }
 
